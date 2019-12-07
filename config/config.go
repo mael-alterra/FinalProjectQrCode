@@ -1,7 +1,7 @@
 package config
 
 import (
-	"BackUpSejutaProgrammer/finalproject/models"
+	"FinalProjectQrCode/models"
 	"fmt"
 
 	"github.com/jinzhu/gorm"
@@ -31,7 +31,7 @@ func InitDB() {
 
 	config := Config{
 		DBUsername: "root",
-		DBPassword: "",
+		DBPassword: "asusorang",
 		DBPort:     "3306",
 		DBHost:     "localhost",
 		DBName:     "goqrcode",

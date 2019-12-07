@@ -3,9 +3,13 @@ package models
 import "github.com/jinzhu/gorm"
 
 //Absen ...
-type Absen struct {
+type absen struct {
 	gorm.Model
-	Tanggal  string `json:"tanggal" form:"tanggal"`
 	UserId   int    `json:"userid" form:"userid"`
-	Password string `json:"password" form:"password"`
+	Tanggal  string `json:"tanggal" form:"tanggal
+}
+
+type user struct{
+	gorm.Model
+	absen absen `gorm:"Foreignkey:UserId"`
 }
