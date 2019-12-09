@@ -4,15 +4,16 @@ import (
 	"FinalProjectQrCode/lib/database"
 	"FinalProjectQrCode/models"
 	"fmt"
-	"github.com/jinzhu/gorm"
-	"github.com/labstack/echo"
-	rqrcode "github.com/skip2/go-qrcode"
-	wqrcode "github.com/tuotoo/qrcode"
 	"log"
 	"net/http"
 	"os"
 	"strconv"
 	"time"
+
+	"github.com/jinzhu/gorm"
+	"github.com/labstack/echo"
+	rqrcode "github.com/skip2/go-qrcode"
+	wqrcode "github.com/tuotoo/qrcode"
 )
 
 //GetReadQRCode ...
@@ -38,7 +39,7 @@ func GetCreateQRCode(c echo.Context) error {
 		TimeStamp: timeStamp,
 	}
 
-	if _,err := database.CreateQrCode(&qrCode); err != nil{
+	if _, err := database.CreateQrCode(&qrCode); err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
@@ -47,20 +48,20 @@ func GetCreateQRCode(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-		"message": "success get create QR Code",
-		"url QR Code " : "C:/Users/Roby/go/src/FinalProjectQrCode/qrCode.png",
+		"message":      "success get create QR Code",
+		"url QR Code ": "https://hadirboss.herokuapp.com/qrCode.png",
 	})
 }
 
-func ReadAbsenQrCode ( c echo.Context) error {
+func ReadAbsenQrCode(c echo.Context) error {
 	var id, _ = strconv.Atoi(c.Param(""))
 	users, err := database.GetUser(id)
 	if err != nil {
-	return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
-	"message": "success get all users",
-	"users":   users,
+		"message": "success get all users",
+		"users":   users,
 	})
 
 }
