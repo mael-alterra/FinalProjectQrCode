@@ -22,7 +22,7 @@ func New() *echo.Echo {
 	e.POST("/addabsen/", c.CreateAbsenController)
 
 	e.DELETE("/users/:id", c.DeleteUserController)
-	//e.PUT("/users/:id".UpdateUserController)
+	e.PUT("/users/:id", c.UpdateUserController)
 
 	eAuth := e.Group("")
 	eAuth.Use(echoMid.BasicAuth(m.BasicAuth))
