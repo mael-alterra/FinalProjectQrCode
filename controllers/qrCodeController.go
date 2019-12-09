@@ -62,5 +62,4 @@ func ReadAbsenQrCode ( c echo.Context) error {
 	"message": "success get all users",
 	"users":   users,
 	})
-
 }

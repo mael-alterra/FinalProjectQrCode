@@ -16,9 +16,11 @@ func New() *echo.Echo {
 	e.GET("/users/:id", c.GetUserController)
 
 	e.GET("/createqrcode", 	c.GetCreateQRCode)
-	e.GET ("/absensi/:time_stamp", c.AbsenController)
+	e.POST ("/absensi/:time_stamp/:userid", c.AbsenController)
 
 	e.POST("/addusers/", c.CreateUserController)
+	e.POST("/addabsen/", c.CreateAbsenController)
+
 	e.DELETE("/users/:id", c.DeleteUserController)
 	//e.PUT("/users/:id".UpdateUserController)
 
