@@ -2,10 +2,10 @@ package config
 
 import (
 	"FinalProjectQrCode/models"
-	"fmt"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
+	_ "github.com/mattn/go-sqlite3"
 )
 
 var (
@@ -17,41 +17,41 @@ func init() {
 	InitialMigration()
 }
 
-//Config ...
-type Config struct {
-	DBUsername string
-	DBPassword string
-	DBPort     string
-	DBHost     string
-	DBName     string
-}
+// //Config ...
+// type Config struct {
+// 	DBUsername string
+// 	DBPassword string
+// 	DBPort     string
+// 	DBHost     string
+// 	DBName     string
+// }
 
 //InitDB ...
 func InitDB() {
 
-	config := Config{
-		DBUsername: "root",
-		DBPassword: "asusorang",
-		DBPort:     "3306",
-		DBHost:     "localhost",
-		DBName:     "goqrcode",
-	}
+	// config := Config{
+	// 	DBUsername: "root",
+	// 	DBPassword: "asusorang",
+	// 	DBPort:     "3306",
+	// 	DBHost:     "localhost",
+	// 	DBName:     "goqrcode",
+	// }
 
-	connectionString := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
-		config.DBUsername,
-		config.DBPassword,
-		config.DBHost,
-		config.DBPort,
-		config.DBName,
-	)
+	// connectionString := fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=utf8&parseTime=True&loc=Local",
+	// 	config.DBUsername,
+	// 	config.DBPassword,
+	// 	config.DBHost,
+	// 	config.DBPort,
+	// 	config.DBName,
+	// )
 
 	var err error
-	DB, err = gorm.Open("mysql", connectionString)
+	DB, err = gorm.Open("sqlite3", "./db/crud_go.db")
 	if err != nil {
 		panic(err)
 	}
 }
 
 func InitialMigration() {
-	DB.AutoMigrate(&models.Users{},models.Absens{}, models.QrCode{})
+	DB.AutoMigrate(&models.Users{}, models.Absens{}, models.QrCode{})
 }
