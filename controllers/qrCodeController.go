@@ -43,13 +43,13 @@ func GetCreateQRCode(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
-	err := rqrcode.WriteFile("./"+timeStamp, rqrcode.Medium, 256, "qrCode.png")
+	err := rqrcode.WriteFile("localhost:8000/absensi/"+timeStamp, rqrcode.Medium, 256, "qrCode.png")
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 	return c.JSON(http.StatusOK, map[string]interface{}{
 		"message":      "success get create QR Code",
-		"url QR Code ": "https://hadirboss.herokuapp.com/qrCode.png",
+		"url QR Code ": "https://api.qrserver.com/v1/create-qr-code/?size=550x550&data=" + timeStamp,
 	})
 }
 
