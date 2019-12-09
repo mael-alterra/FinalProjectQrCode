@@ -43,7 +43,7 @@ func GetCreateQRCode(c echo.Context) error {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
-	err := rqrcode.WriteFile("localhost:8000/absensi/"+timeStamp, rqrcode.Medium, 256, "qrCode.png")
+	err := rqrcode.WriteFile("./"+timeStamp, rqrcode.Medium, 256, "qrCode.png")
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
