@@ -79,3 +79,17 @@ func UpdateUserController(c echo.Context) error {
 		"user":    user,
 	})
 }
+
+// CreateAbsenController add new
+func CreateAbsenController(c echo.Context) error {
+	var absen = models.Absens{}
+	_ = c.Bind(&absen)
+	result, err := database.CreateAbsen(&absen)
+	if err != nil {
+		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
+	}
+	return c.JSON(http.StatusOK, map[string]interface{}{
+		"message": "success absensi",
+		"user":    result,
+	})
+}
