@@ -21,7 +21,7 @@ func AbsenController(c echo.Context) error {
 		})
 	}
 	useridint, _ := strconv.Atoi(userid)
-	absens := models.Absens{
+	absens := models.Absens{ //ini untuk post tabel absen
 		Model:           gorm.Model{},
 		UserID:          useridint,
 		QrCodeTimeStamp: time_stamp,
