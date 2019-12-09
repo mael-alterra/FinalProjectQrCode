@@ -12,15 +12,19 @@ import (
 func New() *echo.Echo {
 	e := echo.New()
 
-	e.GET("/users", c.GetUsersController)
+	e.GET("/users", 	c.GetUsersController)
 	e.GET("/users/:id", c.GetUserController)
-	e.POST("/users", c.CreateUserController)
-	//e.DELETE("/users/:id", c.DeleteUserController)
-	//e.PUT("/users/:id", c.UpdateUserController)
+
+	e.GET("/createqrcode", 	c.GetCreateQRCode)
+	e.GET ("/absensi/:time_stamp", c.AbsenController)
+
+	e.POST("/addusers/", c.CreateUserController)
+	e.DELETE("/users/:id", c.DeleteUserController)
+	//e.PUT("/users/:id".UpdateUserController)
 
 	eAuth := e.Group("")
 	eAuth.Use(echoMid.BasicAuth(m.BasicAuth))
 	eAuth.DELETE("/users/:id", c.DeleteUserController)
-	eAuth.PUT("/users/:id", c.UpdateUserController)
+	eAuth.PUT("sers/:id", c.UpdateUserController)
 	return e
 }

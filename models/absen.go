@@ -3,9 +3,10 @@ package models
 import "github.com/jinzhu/gorm"
 
 //Absen ...
-type Absen struct {
+type Absens struct {
 	gorm.Model
-	Tanggal  string `json:"tanggal" form:"tanggal"`
-	UserId   int    `json:"userid" form:"userid"`
-	Password string `json:"password" form:"password"`
+	UserID   int    `json:"userid" 	form:"userid"`
+	Tanggal  string `json:"tanggal" form:"tanggal`
+	Name     string `json:"name"	form:"name"`
+	Status   bool 	`json:"status"	form:"status"`
 }

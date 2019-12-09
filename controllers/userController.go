@@ -21,6 +21,7 @@ func GetUsersController(c echo.Context) error {
 	})
 }
 
+
 //GetUsersController ...
 func GetUserController(c echo.Context) error {
 	var id, _ = strconv.Atoi(c.Param("id"))
